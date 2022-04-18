@@ -1,0 +1,21 @@
+
+<!-- <img src="{{label_tools.qr_code(sample_id)}}"/> -->
+<body>
+<div class="w3-container">
+    <p class='return_address'>
+        {{ return_address }}
+    </p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p >
+        {% for line in sending_address %}
+        <p class='sending_address'> {{ line }} </p>
+        {% endfor %}
+    </p>
+</div>
+</body>

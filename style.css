@@ -1,0 +1,28 @@
+@page {
+    width: 5.5in;
+    height: 4.5in;
+    padding: 0.5in;
+}
+img {
+    height: 6.4mm;
+    display: inline-block;
+    vertical-align: middle;
+    image-rendering: pixelated;
+}
+.return_address {
+    font-family: Verdana;
+    font-weight: bold;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 16px;
+}
+.sending_address {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 20px;
+    /* text-align: center; */
+    /* justify-content: center; */
+    width:50%;
+    margin:0 auto;
+    /* text-align:center; */
+}
