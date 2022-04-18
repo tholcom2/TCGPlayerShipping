@@ -47,10 +47,12 @@ class TCGPlayerShippingLabelWriter:
         address_formatted = []
         name = self.html_formatting(f'{row["FirstName"]} {row["LastName"]}\n')
         address_formatted.append(name)
+        # write street address, include unit no. if applicable
         street_address = self.html_formatting(f'{row["Address1"]}')
         if row['Address2'] is not None and  row['Address2'] != 'None':
             street_address += self.html_formatting(f' {row["Address2"]}')
         address_formatted.append(street_address)
+        # City, State Zip
         city_state_zip = self.html_formatting(f'{row["City"]}, {row["State"]} {row["PostalCode"]}\n')
         address_formatted.append(city_state_zip)
         country = self.html_formatting(row['Country'])
@@ -73,8 +75,8 @@ class TCGPlayerShippingLabelWriter:
         """ top level. Read data and create list of records to export to html """
         self.order_data = self.read_tcg_orders()
 
-        label_writer = LabelWriter("label_template.html",
-                                default_stylesheets=("style.css",))
+        label_writer = LabelWriter("templates/label_template.html",
+                                default_stylesheets=("templates/style.css",))
 
         records = list()
         for row in self.order_data:
@@ -84,7 +86,15 @@ class TCGPlayerShippingLabelWriter:
         label_filename = f'tcg_labels_{datetime.today():%m-%d-%Y}.pdf'
         label_filename = self.uniquify_filename(label_filename)
 
+        print(f'Creating {len(records)} new labels')
+
         label_writer.write_labels(records, target=label_filename)
+
+        print(f'Wrote to {label_filename}')
+
+        
+
+        
 
 
 
